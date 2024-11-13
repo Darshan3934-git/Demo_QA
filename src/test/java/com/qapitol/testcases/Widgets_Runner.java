@@ -18,9 +18,10 @@ public class Widgets_Runner extends BaseClass {
     @Test
     public void WidgetsTest() throws InterruptedException {
         BaseClass.navigateToURl("https://demoqa.com/widgets");
-        widgesHandling.WidgesHandling();
+        //widgesHandling.WidgesHandling();
         //widgesHandling.clickOnTooltip();
-        widgesHandling.SliderHandling();
+        widgesHandling.sliderHandling();
+        //widgesHandling.progressbarHandling();
     }
 
     @AfterMethod

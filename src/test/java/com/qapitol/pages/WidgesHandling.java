@@ -5,6 +5,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.testng.Assert;
 
 import javax.swing.*;
 import java.time.Duration;
@@ -37,19 +38,50 @@ public class WidgesHandling extends BaseClass {
 
         }
 
-        public void SliderHandling() throws InterruptedException {
+        public void sliderHandling() throws InterruptedException {
         // click on slider section
         WebElement slider = driver.findElement(By.xpath("//span[text()='Slider']"));
+            JavascriptExecutor js = (JavascriptExecutor) driver;
+
+            js.executeScript("window.scrollTo(0, 500);");
+            Thread.sleep(5000);
             slider.click();
             Thread.sleep(5000);
 
             //  click on slider bar
             WebElement sliderTab = driver.findElement(By.xpath("//input[@type='range']"));
-            JavascriptExecutor js = (JavascriptExecutor) driver;
             js.executeScript("window.scrollTo(0, 500);");
             Actions actions = new Actions(driver);
             actions.clickAndHold(sliderTab).moveByOffset(60, 0).release().perform();
+
+            WebElement sliderVerify = driver.findElement(By.id("sliderValue"));
+            String str = sliderVerify.getAttribute("value");
+            System.out.println("Slided value is : "+str);
+            Assert.assertEquals(str,"64");
+            Assert.assertEquals(sliderVerify.getAttribute("value"),"64");
+
+
+
         }
+
+    public void progressbarHandling() throws InterruptedException {
+        // click on progress bar section
+        WebElement progressBar = driver.findElement(By.xpath("//span[text()='Progress Bar']"));
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("window.scrollTo(0, 500);");
+        progressBar.click();
+
+        //  click on start button
+        WebElement clickOnStartButton = driver.findElement(By.xpath("//*[text()='Start']"));
+        js.executeScript("window.scrollTo(0, 500);");
+
+        clickOnStartButton.click();
+        Thread.sleep(5000);
+
+        // click on stop button
+        WebElement clickOnStopButton = driver.findElement(By.xpath("//*[text()='Stop']"));
+        clickOnStopButton.click();
+    }
 
 
 
