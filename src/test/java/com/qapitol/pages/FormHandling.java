@@ -99,7 +99,7 @@ public class FormHandling extends BaseClass {
 
         WebElement cityDropdown = driver.findElement(By.id("city"));
         Select citySelect = new Select(cityDropdown);
-        citySelect.selectByVisibleText("Agra");
+        citySelect.selectByVisibleText("Delhi");
 
         // Submit the form
         WebElement submitButton = driver.findElement(By.id("submit"));
