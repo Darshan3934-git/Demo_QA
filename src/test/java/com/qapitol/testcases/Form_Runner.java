@@ -1,19 +1,17 @@
 package com.qapitol.testcases;
 
 import com.qapitol.base.BaseClass;
-import com.qapitol.pages.AlertHandling;
 import com.qapitol.pages.Elements;
 import com.qapitol.pages.FormHandling;
 import com.qapitol.pages.LoginPage;
+import com.qapitol.util.ConfigReader;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 public class Form_Runner {
-
-    LoginPage loginPage;
+    ConfigReader configReader = new ConfigReader();
     Elements elements = new Elements();
-    AlertHandling alertHandling = new AlertHandling();
     FormHandling formHandling = new FormHandling();
 
 
@@ -21,9 +19,10 @@ public class Form_Runner {
     public void setUp()
     {
         BaseClass.initialize();
+        BaseClass.navigateToURl(configReader.getProperty("practiceFormURL"));
     }
 
-    @Test
+    @Test(enabled = true)
     public void testLogin() throws InterruptedException {
         formHandling.formHandling();
 

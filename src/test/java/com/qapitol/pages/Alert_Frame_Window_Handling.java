@@ -2,25 +2,23 @@ package com.qapitol.pages;
 
 import com.qapitol.base.BaseClass;
 import org.openqa.selenium.*;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
-public class AlertHandling extends BaseClass {
+public class Alert_Frame_Window_Handling extends BaseClass {
+    public JavascriptExecutor js = (JavascriptExecutor) driver;
+
     public void promptBoxAlertHandling() throws InterruptedException {
 
-        // open site
-        driver.get("https://demoqa.com/alerts");
-        driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
-        driver.manage().deleteAllCookies();
+        //  click on alert sec
+        WebElement progressBar = driver.findElement(By.xpath("//span[text()='Alerts']"));
+        BaseClass .scrollToElement(progressBar);
+        BaseClass.clickOnElement(progressBar);
 
         Thread.sleep(2000);
         WebElement clickOnPromptBoxButton = driver.findElement(By.xpath("//button[contains(@id,'promtButton')]"));
-        JavascriptExecutor js = (JavascriptExecutor) driver;
-        js.executeScript("window.scrollTo(0, 1000);");
-        js.executeScript("arguments[0].click();", clickOnPromptBoxButton);
+        BaseClass .scrollToElement(clickOnPromptBoxButton);
+        BaseClass.clickOnElement(clickOnPromptBoxButton);
 
 		// print text in alert
 		Thread.sleep(2000);
@@ -43,23 +41,39 @@ public class AlertHandling extends BaseClass {
     public void confirmBoxAlertHandling() throws InterruptedException {
         Thread.sleep(2000);
         WebElement clickOnConfirmBoxButton = driver.findElement(By.xpath("//button[contains(@id,'confirmButton')]"));
-        JavascriptExecutor js = (JavascriptExecutor) driver;
-        js.executeScript("window.scrollTo(0, 1000);");
-        js.executeScript("arguments[0].click();", clickOnConfirmBoxButton);
+        BaseClass .scrollToElement(clickOnConfirmBoxButton);
+        BaseClass.clickOnElement(clickOnConfirmBoxButton);
         Alert alt = driver.switchTo().alert();
         alt.accept();
-
     }
     public void fiveSecAlertHandling() throws InterruptedException {
         Thread.sleep(2000);
         WebElement clickOnConfirmBoxButton = driver.findElement(By.xpath("//button[contains(@id,'timerAlertButton')]"));
-        JavascriptExecutor js = (JavascriptExecutor) driver;
-        js.executeScript("arguments[0].click();", clickOnConfirmBoxButton);
+        BaseClass.clickOnElement(clickOnConfirmBoxButton);
         Thread.sleep(6000);
         //WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         //WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[contains(@id,'timerAlertButton')]")));
         Alert alt = driver.switchTo().alert();
         alt.accept();
 
+    }
+
+    public void frameHandling() {
+        //  click on frame sec
+        WebElement progressBar = driver.findElement(By.xpath("//span[text()='Frames']"));
+        BaseClass .scrollToElement(progressBar);
+        BaseClass.clickOnElement(progressBar);
+
+        WebElement f1= 	driver.findElement(By.id("frame1"));
+        driver.switchTo().frame(f1); // move control to frame
+        WebElement ele =driver.findElement(By.id("sampleHeading"));//fpt text  NoSuchElementException
+        String data =ele.getText();
+        System.out.println("Text :"+data);
+        driver.switchTo().defaultContent();
+    }
+    public void nestedFrameHandling() {
+        driver.switchTo().frame(0);
+        //driver.switchTo().frame(0);
+        driver.switchTo().defaultContent();
     }
 }

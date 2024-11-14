@@ -12,15 +12,8 @@ public class FormHandling extends BaseClass {
 
     public void formHandling() throws InterruptedException {
 
-        // open site
-        driver.get("https://demoqa.com/automation-practice-form");
-        driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
-        driver.manage().deleteAllCookies();
-
         // click on first name text field
         JavascriptExecutor js = (JavascriptExecutor) driver;
-
         js.executeScript("window.scrollBy(0,350)", "");
 
         WebElement firstNameFiled = driver.findElement(By.id("firstName"));
@@ -45,7 +38,7 @@ public class FormHandling extends BaseClass {
 
         // Select gender
         WebElement genderFiled = driver.findElement(By.xpath("//input[@id='gender-radio-1']"));
-        js.executeScript("arguments[0].click();", genderFiled);
+        BaseClass.clickOnElement(genderFiled);
         Thread.sleep(3000);
 
 
@@ -57,7 +50,7 @@ public class FormHandling extends BaseClass {
 
         // select DOB
         WebElement dateOfBirth = driver.findElement(By.xpath("//input[@id='dateOfBirthInput']"));
-        js.executeScript("arguments[0].click();", dateOfBirth);
+        BaseClass.clickOnElement(dateOfBirth);
         Thread.sleep(3000);
 
         // Select Month
@@ -85,25 +78,24 @@ public class FormHandling extends BaseClass {
 
         // add hobbies
         WebElement hobbies = driver.findElement(By.xpath("//input[@id='hobbies-checkbox-1']"));
-        js.executeScript("arguments[0].click();", hobbies);
-
+        BaseClass.clickOnElement(hobbies);
 
         // Address
         WebElement address = driver.findElement(By.id("currentAddress"));
         address.sendKeys("Bengaluru");
 
-        // State and City
-        WebElement stateDropdown = driver.findElement(By.id("state"));
+        /*// State and City
+        WebElement stateDropdown = driver.findElement(By.xpath("//div[text()='Select State']"));
         Select stateSelect = new Select(stateDropdown);
         stateSelect.selectByVisibleText("Uttar Pradesh");
 
-        WebElement cityDropdown = driver.findElement(By.id("city"));
+        WebElement cityDropdown = driver.findElement(By.xpath("//div[@id='city']"));
         Select citySelect = new Select(cityDropdown);
         citySelect.selectByVisibleText("Delhi");
 
         // Submit the form
         WebElement submitButton = driver.findElement(By.id("submit"));
-        submitButton.click();
+        submitButton.click()*/;
     }
 
 

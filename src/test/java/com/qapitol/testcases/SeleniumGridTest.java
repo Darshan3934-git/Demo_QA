@@ -11,7 +11,7 @@ public class SeleniumGridTest {
 
     public static void main(String[] args) {
 
-        String hubURL = " http://192.168.3.89:4444";
+        String hubURL = "http://192.168.3.89:5555";
 
         Capabilities capabilities = new ChromeOptions();
 

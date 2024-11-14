@@ -12,15 +12,14 @@ import java.time.Duration;
 
 public class WidgesHandling extends BaseClass {
 
-    public void WidgesHandling() {
+    public void toolTipHandling() throws InterruptedException {
+        // click on tool tip section
        WebElement widges=  driver.findElement(By.xpath("//span[text()='Tool Tips']"));
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("window.scrollTo(0, 1000);");
         js.executeScript("arguments[0].click();", widges);
-    }
-    public void clickOnTooltip () throws InterruptedException {
+
         WebElement clickOnTooltipButton = driver.findElement(By.xpath("//button[@id='toolTipButton']"));
-        JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("window.scrollBy(0,350)", "");
         Actions action = new Actions(driver);
         action.moveToElement(clickOnTooltipButton).click().perform();
@@ -60,8 +59,6 @@ public class WidgesHandling extends BaseClass {
             Assert.assertEquals(str,"64");
             Assert.assertEquals(sliderVerify.getAttribute("value"),"64");
 
-
-
         }
 
     public void progressbarHandling() throws InterruptedException {
@@ -82,10 +79,5 @@ public class WidgesHandling extends BaseClass {
         WebElement clickOnStopButton = driver.findElement(By.xpath("//*[text()='Stop']"));
         clickOnStopButton.click();
     }
-
-
-
-
-
 
 }
