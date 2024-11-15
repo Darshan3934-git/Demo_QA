@@ -1,10 +1,8 @@
-<suite name="Suite">
-    <test thread-count="5" name="Test">
+<suite name="Selenium Test Suite" parallel="classes" thread-count="1">
+    <test name="Test 1">
         <classes>
             <class name="com.qapitol.testcases.Elements_Runner"/>
             <class name="com.qapitol.testcases.Form_Runner"/>
         </classes>
     </test>
-    <!--  Test  -->
 </suite>
-        <!--  Suite  -->

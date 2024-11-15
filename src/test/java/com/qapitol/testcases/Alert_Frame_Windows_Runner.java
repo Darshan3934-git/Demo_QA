@@ -3,7 +3,6 @@ package com.qapitol.testcases;
 import com.qapitol.base.BaseClass;
 import com.qapitol.pages.Alert_Frame_Window_Handling;
 import com.qapitol.pages.Elements;
-import com.qapitol.pages.LoginPage;
 import com.qapitol.util.ConfigReader;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;

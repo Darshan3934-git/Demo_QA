@@ -4,7 +4,6 @@ import com.aventstack.extentreports.ExtentTest;
 import com.qapitol.base.BaseClass;
 import com.qapitol.base.ExtentReport;
 import com.qapitol.pages.Elements;
-import com.qapitol.pages.LoginPage;
 import com.qapitol.util.ConfigReader;
 import org.testng.annotations.*;
 

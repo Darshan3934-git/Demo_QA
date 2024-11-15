@@ -1,6 +1,8 @@
 package com.qapitol.pages;
 
 import com.qapitol.base.BaseClass;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -11,6 +13,7 @@ import java.time.Duration;
 public class Elements extends BaseClass {
 
     public void textBox() throws InterruptedException {
+          final Logger logger = LogManager.getLogger(Elements.class);
 
         // Click on Textbox Section
         driver.findElement(By.xpath("//span[text()='Text Box']")).click();
@@ -19,28 +22,38 @@ public class Elements extends BaseClass {
         WebElement clickOnFullNameFiled = driver.findElement(By.xpath("//input[@placeholder='Full Name']"));
         BaseClass.clickOnElement(clickOnFullNameFiled);
         clickOnFullNameFiled.sendKeys("Deepak");
+        logger.info("Full Name Entered");
+
 
         // Enter email address
         WebElement clickOnEmailFiled = driver.findElement(By.xpath("//input[@placeholder='name@example.com']"));
         BaseClass.scrollToElement(clickOnEmailFiled);
         BaseClass.clickOnElement(clickOnEmailFiled);
         clickOnEmailFiled.sendKeys("name@example.com");
+        logger.info("email address Entered");
+
 
         // Enter current address
         WebElement clickOnCurrentAddressField = driver.findElement(By.xpath("//textarea[@placeholder='Current Address']"));
         BaseClass.scrollToElement(clickOnCurrentAddressField);
         BaseClass.clickOnElement(clickOnCurrentAddressField);
         clickOnCurrentAddressField.sendKeys("Bengaluru");
+        logger.info("current address Entered");
+
 
         // Enter permanent address
         WebElement clickOnPermanentAddressField = driver.findElement(By.xpath("//textarea[@id='permanentAddress']"));
         clickOnPermanentAddressField.sendKeys("Maharashtra");
+        logger.info("permanent address Entered");
 
         // Click on submit button
         WebElement clickOnSubmitButton = driver.findElement(By.xpath("//button[@id='submit']"));
         BaseClass.scrollToElement(clickOnSubmitButton);
         clickOnSubmitButton.click();
         Thread.sleep(5000);
+        logger.info("clicked on submit button");
+
+
     }
     public void checkBox() throws InterruptedException {
         // Click on checkbox Section
