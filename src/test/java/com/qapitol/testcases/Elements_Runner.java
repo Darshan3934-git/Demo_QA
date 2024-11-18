@@ -5,6 +5,8 @@ import com.qapitol.base.BaseClass;
 import com.qapitol.base.ExtentReport;
 import com.qapitol.pages.Elements;
 import com.qapitol.util.ConfigReader;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.testng.annotations.*;
 
 public class Elements_Runner extends BaseClass {
@@ -30,6 +32,7 @@ public class Elements_Runner extends BaseClass {
     @Test(priority = 1, enabled = true)
     public void checkBoxTesting() throws InterruptedException {
         elements.checkBox();
+
     }
     @Test(priority = 2, enabled = true)
     public void radioButton() throws InterruptedException {
@@ -46,7 +49,6 @@ public class Elements_Runner extends BaseClass {
     @AfterMethod
     public void quitDriver() throws InterruptedException {
         elements.teardown();
-
         ExtentReport.endTest();
     }
 }
